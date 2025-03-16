@@ -55,16 +55,16 @@ public class BoardMapperTests {
          list.forEach(board -> log.info("" + board));      
      }*/
      
-     /* 게시판 조건 조회 테스트 */
+     /* 게시판 조건 조회 테스트
      @Test
      public void testGetPage() {         
          // 실제 존재하는 페이지
          int bno = 4;
          
          log.info("" + mapper.getPage(bno));         
-     }
+     }*/
      
-     /* 게시판 수정 */
+     /* 게시판 수정
      @Test
      public void testModify() {         
          BoardVO board = new BoardVO();
@@ -74,6 +74,14 @@ public class BoardMapperTests {
          
          int result = mapper.modify(board);
          log.info("result : " +result);         
-     }
+     }*/
      
+     /* 게시판 삭제 */
+     @Test
+     public void testDelete() {
+         
+         int result = mapper.delete(23);
+         log.info("result : " + result);
+         
+     }
 }

@@ -14,7 +14,7 @@ public class BoardServiceImpl implements BoardService{
 	@Autowired
 	private BoardMapper mapper;
 	
-	// 게시판 등록
+	/* 게시판 등록 */
 	@Override
     public void enroll(BoardVO board) {
         
@@ -22,7 +22,7 @@ public class BoardServiceImpl implements BoardService{
         
     }
 	
-	// 게시판 목록
+	/* 게시판 목록 */
 	@Override
     public List<BoardVO> getList() {
         
@@ -36,5 +36,16 @@ public class BoardServiceImpl implements BoardService{
         return mapper.getPage(bno);
     }
 	
-	
+    /* 게시판 수정 */
+    @Override
+    public int modify(BoardVO board) {
+        
+        return mapper.modify(board);
+    }
+    
+    /* 게시판 삭제 */
+    @Override
+    public int delete(int bno) {        
+        return mapper.delete(bno);
+    }    
 }

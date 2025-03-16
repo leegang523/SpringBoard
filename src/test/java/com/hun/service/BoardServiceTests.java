@@ -42,13 +42,36 @@ public class BoardServiceTests {
             
         }*/
         
-        // 게시판 조건 조회
+        /* 게시판 조건 조회
         @Test
         public void testGETPage() {
             
             int bno = 4;
             
             log.info("" + service.getPage(bno));
+            
+        }*/
+        
+        /* 게시판 수정
+        @Test
+        public void testModify() {
+            
+            BoardVO board = new BoardVO();
+            board.setBno(4);
+            board.setTitle("서비스테스트 수정 제목");
+            board.setContent("서비스테스트 수정 내용");
+            
+            int result = service.modify(board);
+            log.info("result : " +result);
+            
+        }*/   
+        
+        /* 게시판 삭제 */
+        @Test
+        public void testDelete() {
+            
+            int result = service.delete(23);
+            log.info("result : " + result);
             
         }
 
