@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.hun.mapper.BoardMapper;
 import com.hun.model.BoardVO;
+import com.hun.model.Criteria;
 
 @Service
 public class BoardServiceImpl implements BoardService{
@@ -48,4 +49,17 @@ public class BoardServiceImpl implements BoardService{
     public int delete(int bno) {        
         return mapper.delete(bno);
     }    
+    
+    /* 게시판 목록(페이징 적용) */
+    @Override
+    public List<BoardVO> getListPaging(Criteria cri) {        
+        return mapper.getListPaging(cri);
+    }    
+    
+    /* 게시물 총 갯수 */
+    @Override
+    public int getTotal(Criteria cri) {
+        
+        return mapper.getTotal(cri);
+    }
 }

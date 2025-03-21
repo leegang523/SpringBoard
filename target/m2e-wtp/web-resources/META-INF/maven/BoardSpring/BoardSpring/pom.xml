@@ -8,7 +8,7 @@
 	
 	<!-- 라이브러리 버전관리 -->
 	<properties>
-		<java-version>11</java-version>
+		<java-version>17</java-version>
       	<javax.servlet-version>4.0.1</javax.servlet-version>
       	<javax.servlet.jsp-version>2.3.3</javax.servlet.jsp-version>
       	<javax.servlet.jsp.jstl-version>1.2</javax.servlet.jsp.jstl-version>

@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.hun.model.BoardVO;
+import com.hun.model.Criteria;
+import com.hun.model.PageMakerDTO;
 import com.hun.service.BoardService;
 
 @Controller
@@ -22,7 +24,7 @@ public class BoardController {
 	@Autowired
 	private BoardService bservice;
 	
-	// 게시판 목록 페이지 접속
+	/* 게시판 목록 페이지 접속
 	@GetMapping("/list")
     // => @RequestMapping(value="list", method=RequestMethod.GET)
     public void boardListGET(Model model) {
@@ -30,7 +32,7 @@ public class BoardController {
         log.info("게시판 목록 페이지 진입");
         
         model.addAttribute("list", bservice.getList());
-    }
+    }*/
     
 	// 게시판 등록 페이지 접속
     @GetMapping("/enroll")
@@ -55,28 +57,32 @@ public class BoardController {
     
     // 게시판 조건 조회
     @GetMapping("/get")
-    public void boardGetPageGET(int bno, Model model) {
+    public void boardGetPageGET(int bno, Model model, Criteria cri) {
         
         model.addAttribute("pageInfo", bservice.getPage(bno));
+        
+        model.addAttribute("cri",cri);
         
     }
     
     // 수정 페이지 이동
     @GetMapping("/modify")
-    public void boardModifyGET(int bno, Model model) {
+    public void boardModifyGET(int bno, Model model, Criteria cri) {
         
         model.addAttribute("pageInfo", bservice.getPage(bno));
+        
+        model.addAttribute("cri",cri);
         
     }
     
     // 페이지 수정
     @PostMapping("/modify")
-    public String boardModifyPOST(BoardVO board, RedirectAttributes rttr) {
-        
+    public String boardModifyPOST(BoardVO board, RedirectAttributes rttr, Criteria cri) {
+    	
         bservice.modify(board);
         
         rttr.addFlashAttribute("result", "modify success");
-        
+        rttr.addAttribute("cri",cri);
         return "redirect:/board/list";
         
     }
@@ -91,4 +97,22 @@ public class BoardController {
         
         return "redirect:/board/list";
     }
+    
+    
+    /* 게시판 목록 페이지 접속(페이징 적용) */
+    @GetMapping("/list")
+    public void boardListGET(Model model, Criteria cri) {
+        
+        log.info("boardListGET");
+        
+        model.addAttribute("list", bservice.getListPaging(cri));
+        
+        int total = bservice.getTotal(cri);
+        
+        PageMakerDTO pageMake = new PageMakerDTO(cri, total);
+        
+        model.addAttribute("pageMaker", pageMake);
+        
+    }
+    
 }

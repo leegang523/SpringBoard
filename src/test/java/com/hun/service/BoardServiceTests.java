@@ -1,5 +1,7 @@
 package com.hun.service;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -9,6 +11,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.hun.model.BoardVO;
+import com.hun.model.Criteria;
 
 import lombok.extern.log4j.Log4j;
 
@@ -74,5 +77,15 @@ public class BoardServiceTests {
             log.info("result : " + result);
             
         }
-
+        /* 게시판 조회(페이징 적용) */
+        @Test
+        public void testGetListPaging() {
+            
+            Criteria cri = new Criteria();
+            
+            List list = service.getListPaging(cri);
+            
+            list.forEach(board -> log.info("" + board));           
+            
+        }
 }
