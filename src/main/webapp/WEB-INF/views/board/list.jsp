@@ -94,9 +94,10 @@
 	</head>
 
 	<body>
-		<h1>목록페이지입니다.</h1>
+		<h1>스프링게시판</h1>
 		<div class="table_wrap">
 			<a href="/board/enroll" class="top_btn">게시판 등록</a>
+			<a href="/board/login" class="top_btn">로그인</a>
 			<table>
 				<thead>
 					<tr>

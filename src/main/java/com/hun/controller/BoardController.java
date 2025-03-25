@@ -114,5 +114,13 @@ public class BoardController {
         model.addAttribute("pageMaker", pageMake);
         
     }
-    
+    // 게시판 등록 페이지 접속
+    @GetMapping("/login")
+    // => @RequestMapping(value="enroll", method=RequestMethod.GET)
+    public String boardLogin() {
+        
+        log.info("로그인 페이지 진입");
+        return "board/login";
+        
+    }
 }
